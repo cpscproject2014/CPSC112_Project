@@ -1,6 +1,6 @@
 CPSC112_Assignment3
 ===================
-This is a good system. --Anthony
+
 
 
 I. First Priority (To have an app)
