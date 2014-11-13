@@ -26,9 +26,11 @@ public class CPSC112_Assignment3 {
 
   public static boolean isGuessValid(String input) {
     // Part 2 code goes here
+	  return true;
   }
 
   public static boolean isGameOver(String input) {
     // Parts 3 and 4 code goes here
+	  return true;
   }
 }
