@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/CPSC112_Assignment3/src/edu/yale/cpsc112_assignment3/CPSC112_Assignment3.java"/>
+<listEntry value="/CPSC112_Project/src/edu/yale/cpsc112_assignment3/CPSC112_Assignment3.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
@@ -11,5 +11,5 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="edu.yale.cpsc112_assignment3.CPSC112_Assignment3"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="CPSC112_Assignment3"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="CPSC112_Project"/>
 </launchConfiguration>
