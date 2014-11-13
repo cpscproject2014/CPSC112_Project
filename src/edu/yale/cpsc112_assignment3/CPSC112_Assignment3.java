@@ -13,7 +13,7 @@ public class CPSC112_Assignment3 {
     isGameOver("1234");
     isGameOver("4321");
     isGameOver("2567");
-    isGameOver("1432");
+    isGameOver("1432"); //NICOLE ARGHHHHAWRHAJLFZL
   }
 
   public static void makeMySecret() {
