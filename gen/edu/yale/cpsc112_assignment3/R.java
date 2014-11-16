@@ -25,9 +25,11 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080002;
-        public static final int textIn=0x7f080000;
-        public static final int textOut=0x7f080001;
+        public static final int action_settings=0x7f080004;
+        public static final int buttonSend=0x7f080003;
+        public static final int editAmount=0x7f080001;
+        public static final int editRecipient=0x7f080000;
+        public static final int editText1=0x7f080002;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -37,8 +39,12 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
+        public static final int add_recipient=0x7f050004;
+        public static final int amount=0x7f050005;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
+        public static final int note=0x7f050006;
+        public static final int send=0x7f050003;
     }
     public static final class style {
         /** 

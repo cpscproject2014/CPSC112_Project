@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,29 +6,48 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.yale.cpsc112_assignment3.MainActivity" >
+    android:orientation="vertical"
+    tools:context="edu.yale.cpsc112_lesson1.MainActivity" 
+    android:gravity="center">
+    
 
-    <EditText
-        android:id="@+id/textIn"
+   <EditText
+        android:id="@+id/editRecipient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="50dp"
         android:ems="10"
-        android:hint="Guess a 4-digit numbers"
-        android:imeOptions="actionDone"
-        android:inputType="textNoSuggestions|textVisiblePassword" >
+        android:inputType="phone"
+        android:hint="@string/add_recipient" />
 
-        <requestFocus />
-    </EditText>
+   <EditText
+       android:id="@+id/editAmount"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:layout_marginBottom="50dp"
+       android:inputType="numberDecimal" 
+       android:hint="@string/amount" />
 
-    <TextView
-        android:id="@+id/textOut"
+   <EditText
+       android:id="@+id/editText1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="140dp"
+       android:ems="10"
+       android:hint="@string/note" 
+       android:inputType="textMultiLine" >
+
+       <requestFocus />
+   </EditText>
+   
+   <Button
+        android:id="@+id/buttonSend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textIn"
-        android:layout_below="@+id/textIn"
-        android:scrollbars="vertical"
-        android:gravity="bottom"
-        android:text="@string/hello_world" />
-
-</RelativeLayout>
+        android:layout_marginBottom="2dp"
+        android:text="@string/send"
+        android:gravity="center"
+        android:onClick = "BUTTON" />
+</LinearLayout>

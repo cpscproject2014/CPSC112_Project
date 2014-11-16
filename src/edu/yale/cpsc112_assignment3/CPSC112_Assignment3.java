@@ -14,6 +14,7 @@ public class CPSC112_Assignment3 {
     isGameOver("4321");
     isGameOver("2567");
     isGameOver("1432"); //NICOLE ARGHHHHAWRHAJLFZL
+    System.out.print("hello world.");
   }
 
   public static void makeMySecret() {
