@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
         editAmount = (EditText) findViewById(R.id.editAmount);
         Button buttonSend = (Button) findViewById(R.id.buttonSend);
         
+        //The following describes what happens when you click the button
         buttonSend.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -64,7 +65,7 @@ public class MainActivity extends Activity {
         return true;
     }
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -76,7 +77,7 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-=======
+//=======
    @Override
    public boolean onOptionsItemSelected(MenuItem item)
    {
