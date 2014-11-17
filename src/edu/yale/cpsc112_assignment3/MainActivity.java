@@ -51,7 +51,8 @@ public class MainActivity extends Activity {
     protected void sendSms(String Recipient, String Amount) {
 		// TODO Auto-generated method stub
 		SmsManager manager = SmsManager.getDefault();
-		manager.sendTextMessage(Recipient, null, Amount, null, null);
+		String message = new String ("Hey there! You owe Blank " + Amount + ".");
+		manager.sendTextMessage(Recipient, null, message, null, null);
 	}
 
 
