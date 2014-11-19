@@ -7,10 +7,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.yale.cpsc112_assignment3.MainActivity2" >
+    
+    <!-- Title String goes here -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/action_settings" />
+        android:text="@string/action_settings" 
+        android:gravity="center_horizontal"/>
 
 </RelativeLayout>
