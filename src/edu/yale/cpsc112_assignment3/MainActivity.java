@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
+	/*
 //<<<<<<< Updated upstream
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -94,5 +94,5 @@ public class MainActivity extends Activity {
    }
    
    
->>>>>>> Stashed changes
+>>>>>>> Stashed changes*/
 }
