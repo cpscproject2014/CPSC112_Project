@@ -9,5 +9,6 @@
     <string name="amount">$0.00</string>
     <string name="note">What\'s it for?</string>
     <string name="title_activity_settings_main">SettingsMain</string>
+    <string name="title_activity_main_activity2">MainActivity2</string>
 
 </resources>

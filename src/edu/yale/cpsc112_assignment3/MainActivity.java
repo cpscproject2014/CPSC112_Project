@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
    
    public void openSettings()
 	{
-		Intent openSettings = new Intent(this, SettingsMain.class);
+		Intent openSettings = new Intent(this, MainActivity2.class);
 		startActivity(openSettings);
 		
 	}

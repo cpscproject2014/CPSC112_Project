@@ -34,12 +34,14 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int activity_settings_main=0x7f030001;
+        public static final int activity_main_activity2=0x7f030001;
+        public static final int activity_settings_main=0x7f030002;
     }
     public static final class menu {
         public static final int actionbar=0x7f070000;
         public static final int main=0x7f070001;
-        public static final int settings_main=0x7f070002;
+        public static final int main_activity2=0x7f070002;
+        public static final int settings_main=0x7f070003;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -49,6 +51,7 @@ public final class R {
         public static final int hello_world=0x7f050001;
         public static final int note=0x7f050006;
         public static final int send=0x7f050003;
+        public static final int title_activity_main_activity2=0x7f050008;
         public static final int title_activity_settings_main=0x7f050007;
     }
     public static final class style {
