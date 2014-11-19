@@ -1,6 +1,7 @@
 package edu.yale.cpsc112_assignment3;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.Menu;
@@ -65,20 +66,6 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-	/*
-//<<<<<<< Updated upstream
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-//=======
    @Override
    public boolean onOptionsItemSelected(MenuItem item)
    {
@@ -88,11 +75,14 @@ public class MainActivity extends Activity {
       int id = item.getItemId();
       if (id == R.id.action_settings)
       {
+    	  openSettings();
          return true;
       }
       return super.onOptionsItemSelected(item);
    }
+   public void openSettings(){
+	   Intent intent = new Intent(this, MainActivity2.class);
+	   startActivity(intent);
+   }
    
-   
->>>>>>> Stashed changes*/
 }
