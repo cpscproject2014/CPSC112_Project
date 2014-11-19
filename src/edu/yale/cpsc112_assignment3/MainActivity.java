@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
 		    		// Put texting code HERE
 		    		sendSms(Recipient, Amount);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();
+		    		
 			}
 		    	 }});
         }  	
