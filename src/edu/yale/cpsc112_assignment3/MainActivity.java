@@ -1,6 +1,7 @@
 package edu.yale.cpsc112_assignment3;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -31,6 +32,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+
+				SmsManager smsManager = SmsManager.getDefault();
 				String Recipient = editRecipient.getText().toString();
 				String Amount = editAmount.getText().toString();
 				
@@ -42,7 +45,9 @@ public class MainActivity extends Activity {
 		    	}
 		    		else{
 		    		// Put texting code HERE
-		    		sendSms(Recipient, Amount);
+		    			String sms = new String();
+		    			sms = ("Hey there! You owe whoever sent you this text $" + Amount +".");
+		    		smsManager.sendTextMessage(Recipient, null, sms, null, null);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();
 		    		
 			}
@@ -50,13 +55,6 @@ public class MainActivity extends Activity {
         }  	
    
 
-
-    protected void sendSms(String Recipient, String Amount) {
-		// TODO Auto-generated method stub
-		SmsManager manager = SmsManager.getDefault();
-		String message = new String ("Hey there! You owe Blank " + Amount + ".");
-		manager.sendTextMessage(Recipient, null, message, null, null);
-	}
 
 
 
