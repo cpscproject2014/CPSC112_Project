@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 		    		else{
 		    		// Put texting code HERE
 		    			String sms = new String();
-		    			sms = ("Hey there! You owe whoever sent you this text $" + Amount +". It's for " + WhatsItFor);
+		    			sms = ("Hey there! You owe whoever sent you this text $" + Amount +". It's for " + WhatsItFor + ".");
 		    		smsManager.sendTextMessage(Recipient, null, sms, null, null);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();
 		    		
