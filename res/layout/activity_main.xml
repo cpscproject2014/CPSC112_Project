@@ -31,7 +31,7 @@
        android:hint="@string/amount" />
 
    <EditText
-       android:id="@+id/editText1"
+       android:id="@+id/editWhatsItFor"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginBottom="140dp"

@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
-	EditText editRecipient, editAmount;
+	EditText editRecipient, editAmount, editWhatsItFor;
 	Button buttonSend;
 
     @Override
@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
         
         editRecipient = (EditText) findViewById(R.id.editRecipient);
         editAmount = (EditText) findViewById(R.id.editAmount);
+        editWhatsItFor = (EditText) findViewById(R.id.editWhatsItFor);
         Button buttonSend = (Button) findViewById(R.id.buttonSend);
         
         //The following describes what happens when you click the button
@@ -36,6 +37,7 @@ public class MainActivity extends Activity {
 				SmsManager smsManager = SmsManager.getDefault();
 				String Recipient = editRecipient.getText().toString();
 				String Amount = editAmount.getText().toString();
+				String WhatsItFor = editWhatsItFor.getText().toString();
 				
 		    	 if (Amount.equals("")) { 
 		    		Toast.makeText(MainActivity.this, "ERROR: Please enter an amount greater than $0.00",Toast.LENGTH_LONG).show();
@@ -46,7 +48,7 @@ public class MainActivity extends Activity {
 		    		else{
 		    		// Put texting code HERE
 		    			String sms = new String();
-		    			sms = ("Hey there! You owe whoever sent you this text $" + Amount +".");
+		    			sms = ("Hey there! You owe whoever sent you this text $" + Amount +". It's for " + WhatsItFor);
 		    		smsManager.sendTextMessage(Recipient, null, sms, null, null);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();
 		    		
