@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity2 extends Activity {
+public class MainActivity3 extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +16,7 @@ public class MainActivity2 extends Activity {
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0099CC"));     
         ab.setBackgroundDrawable(colorDrawable);
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main_activity2);
+		setContentView(R.layout.activity_main_activity3);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}

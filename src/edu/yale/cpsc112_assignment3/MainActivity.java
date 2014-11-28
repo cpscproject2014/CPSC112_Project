@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.Toast; 
+import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 
 
 public class MainActivity extends Activity {
@@ -20,6 +23,9 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActionBar ab = getActionBar(); 
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0099CC"));     
+        ab.setBackgroundDrawable(colorDrawable);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
@@ -73,6 +79,7 @@ public class MainActivity extends Activity {
       // automatically handle clicks on the Home/Up button, so long
       // as you specify a parent activity in AndroidManifest.xml.
       int id = item.getItemId();
+      
       if (id == R.id.action_settings)
       {
     	  openSettings();
@@ -82,6 +89,11 @@ public class MainActivity extends Activity {
    }
    public void openSettings(){
 	   Intent intent = new Intent(this, MainActivity2.class);
+	   startActivity(intent);
+   }
+   
+   public void openAbout(){
+	   Intent intent = new Intent(this, MainActivity3.class);
 	   startActivity(intent);
    }
    

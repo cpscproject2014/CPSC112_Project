@@ -11,5 +11,8 @@
     <string name="recipient_name">Daniel Abadi</string>
     <string name="title_activity_main_activity2">Who owes you?</string>
     <string name="settings_main">Settings</string>
+    <string name="about">About</string>
+    <string name="people">Julie Chang\nAnthony Amadeo\nAndrew Schmidt\nNicole Tsai\nMegan Wilson\n\nMentor: Mark Santolucito </string>
+    <string name="course"> CPSC 112: Fall 2014</string>
 
 </resources>
