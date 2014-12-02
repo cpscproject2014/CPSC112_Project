@@ -13,7 +13,7 @@ public class MainActivity3 extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         ActionBar ab = getActionBar(); 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0099CC"));     
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#669900"));     
         ab.setBackgroundDrawable(colorDrawable);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_activity3);

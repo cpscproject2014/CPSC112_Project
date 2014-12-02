@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="edu.yale.cpsc112_lesson1.MainActivity" 
     android:gravity="center"
-    android:background="#33B5E5"
+    android:background="#99CC00"
     android:textColorHint="#ffffff"
     android:textColor="#ffffff">
     

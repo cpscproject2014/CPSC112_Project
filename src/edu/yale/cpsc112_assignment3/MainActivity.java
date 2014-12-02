@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar ab = getActionBar(); 
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0099CC"));     
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#669900"));     
         ab.setBackgroundDrawable(colorDrawable);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -109,11 +109,7 @@ public class MainActivity extends Activity {
    public void openSettings(){
 	   Intent intent = new Intent(this, MainActivity2.class);
 	   startActivity(intent);
-   }
    
-   public void openAbout(){
-	   Intent intent = new Intent(this, MainActivity3.class);
-	   startActivity(intent);
    }
    
 }
