@@ -1,5 +1,11 @@
 package edu.yale.cpsc112_assignment3;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -21,7 +27,13 @@ public class MainActivity extends Activity {
 	EditText editRecipient, editAmount, editWhatsItFor;
 	Button buttonSend;
 
-    @Override
+    protected void onCreate1(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.contacts_list_view);
+    }
+	
+    
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         ActionBar ab = getActionBar(); 
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#0099CC"));     
@@ -34,14 +46,15 @@ public class MainActivity extends Activity {
         editWhatsItFor = (EditText) findViewById(R.id.editWhatsItFor);
         Button buttonSend = (Button) findViewById(R.id.buttonSend);
         
+        
         //The following describes what happens when you click the button
         buttonSend.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 
-				SmsManager smsManager = SmsManager.getDefault();
-				String Recipient = editRecipient.getText().toString();
+				final SmsManager smsManager = SmsManager.getDefault();
+				final String Recipient = editRecipient.getText().toString();
 				String Amount = editAmount.getText().toString();
 				String WhatsItFor = editWhatsItFor.getText().toString();
 				
@@ -53,14 +66,20 @@ public class MainActivity extends Activity {
 		    	}
 		    		else{
 		    		// Put texting code HERE
-		    			String sms = new String();
-		    			sms = ("Hey there! You owe whoever sent you this text $" + Amount +". It's for " + WhatsItFor + ".");
-		    		smsManager.sendTextMessage(Recipient, null, sms, null, null);
+		    			final String sms = new String("Hey there! You owe whoever sent you this text $" + Amount +". It's for " + WhatsItFor + ".");
+		    		
+		    		final Timer mytimer = new Timer(true);
+		    		final TimerTask mytask = new TimerTask() {
+		    			public void run() {
+		                    smsManager.sendTextMessage(Recipient, null, sms, null, null);
+		                }
+		            };
+		            mytimer.schedule(mytask, 86400000L);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();
 		    		
 			}
 		    	 }});
-        }  	
+        } 	
    
 
 
