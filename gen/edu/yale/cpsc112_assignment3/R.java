@@ -26,6 +26,7 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080004;
+        public static final int action_about=0x7f080009;
         public static final int action_settings=0x7f080008;
         public static final int buttonSend=0x7f080003;
         public static final int editAmount=0x7f080001;
@@ -44,6 +45,7 @@ public final class R {
     public static final class menu {
         public static final int main=0x7f070000;
         public static final int main_activity2=0x7f070001;
+        public static final int main_activity3=0x7f070002;
     }
     public static final class string {
         public static final int about=0x7f05000a;

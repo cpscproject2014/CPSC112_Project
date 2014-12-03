@@ -45,7 +45,12 @@ public class DatabaseInteraction {
 		int i = 0;
 		for(String x: names)
 		{
-	// this creates an error -->	sums[i] = sumPersonEntries(x);
+			try {
+				sums[i] = sumPersonEntries(x);
+			} catch (IOException e) {
+				System.out.println("There are no entries!");
+				
+			}
 			//Exception
 			i++;
 		}
@@ -67,10 +72,14 @@ public class DatabaseInteraction {
 		
 		double sum = 0;
 		BufferedReader saveFile = new BufferedReader(new FileReader("Entries.txt"));
+		if(saveFile.readLine() == null)
+		{
+			
+		}
 		while(saveFile.readLine() != null){
 			String line = new String();
 			line = saveFile.readLine();
-			if(line.substring(0,line.indexOf(",")) == name)
+			if(line.substring(0,line.indexOf(",")).equals(name))
 			{
 				double addAmount = Double.parseDouble(line.substring(line.indexOf(",")+1,line.length()));
 				if (addAmount >= 0)
@@ -79,11 +88,11 @@ public class DatabaseInteraction {
 				}
 				else if (addAmount < 0)
 				{
-					sum =- addAmount;
+					sum =- Math.abs(addAmount);
 				}
 				else
 				{
-					System.out.println("Please enter a valid number");
+					//Some kind of error message;
 				}
 			}
 		}
