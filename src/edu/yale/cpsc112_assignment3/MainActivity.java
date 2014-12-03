@@ -1,13 +1,12 @@
 package edu.yale.cpsc112_assignment3;
 
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
-import android.app.PendingIntent;
+import android.app.AlarmManager;
+import android.provider.ContactsContract;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -26,12 +25,12 @@ import android.graphics.drawable.ColorDrawable;
 public class MainActivity extends Activity {
 	EditText editRecipient, editAmount, editWhatsItFor;
 	Button buttonSend;
+	
 
     protected void onCreate1(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contacts_list_view);
     }
-	
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +56,12 @@ public class MainActivity extends Activity {
 				final String Recipient = editRecipient.getText().toString();
 				String Amount = editAmount.getText().toString();
 				String WhatsItFor = editWhatsItFor.getText().toString();
+				
+				Calendar cal = Calendar.getInstance();
+				long millis = 1000 * 60;
+			    long sendTime = cal.getTimeInMillis() + millis;
+			    cal.setTimeInMillis(sendTime);
+			    
 				
 		    	 if (Amount.equals("")) { 
 		    		Toast.makeText(MainActivity.this, "ERROR: Please enter an amount greater than $0.00",Toast.LENGTH_LONG).show();
