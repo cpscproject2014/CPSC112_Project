@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
 		                    smsManager.sendTextMessage(Recipient, null, sms, null, null);
 		                }
 		            };
-		            mytimer.schedule(mytask, 86400000L);
+		            mytimer.schedule(mytask, 60000L);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();
 		    		
 			}
