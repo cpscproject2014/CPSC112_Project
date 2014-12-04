@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Who Owes You?</string>
     <string name="send">Send</string>
-    <string name="add_recipient">Add recipients&#8230;</string>
+    <string name="add_recipient">Recipient number&#8230;</string>
     <string name="amount">$0.00</string>
     <string name="note">What\'s it for?</string>
     <string name="recipient_name">Daniel Abadi</string>
@@ -14,5 +14,7 @@
     <string name="about">About</string>
     <string name="people">Julie Chang\nAnthony Amadeo\nAndrew Schmidt\nNicole Tsai\nMegan Wilson\n\nMentor: Mark Santolucito </string>
     <string name="course"> CPSC 112: Fall 2014</string>
+    <string name="recipients_name">Recipient name&#8230;</string>
+    <string name="your_name">Your name&#8230;</string>
     
 </resources>

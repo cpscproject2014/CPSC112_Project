@@ -13,13 +13,30 @@
     android:textColorHint="#ffffff"
     android:textColor="#ffffff">
     
+     <EditText
+        android:id="@+id/editYourName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:hint="@string/your_name" />
+
+   <EditText
+        android:id="@+id/editRecipientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="@string/recipients_name" />
 
    <EditText
         android:id="@+id/editRecipient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:ems="10"
         android:inputType="phone"
         android:hint="@string/add_recipient" />
@@ -29,7 +46,8 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:ems="10"
-       android:layout_marginBottom="50dp"
+       android:layout_marginTop="15dp"
+       android:layout_marginBottom="15dp"
        android:inputType="numberDecimal" 
        android:hint="@string/amount" />
 
@@ -37,7 +55,8 @@
        android:id="@+id/editWhatsItFor"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginBottom="140dp"
+       android:layout_marginTop="15dp"
+       android:layout_marginBottom="60dp"
        android:ems="10"
        android:hint="@string/note" 
        android:inputType="textMultiLine" >
