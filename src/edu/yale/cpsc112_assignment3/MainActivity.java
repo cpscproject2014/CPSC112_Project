@@ -58,6 +58,10 @@ public class MainActivity extends Activity {
 				final String Recipient = editRecipient.getText().toString();
 				String Amount = editAmount.getText().toString();
 				String WhatsItFor = editWhatsItFor.getText().toString();
+				String RecipientName = editRecipientName.getText().toString();
+				String YourName = editYourName.getText().toString();
+				
+				boolean sendText = true;
 				
 				Calendar cal = Calendar.getInstance();
 				long millis = 1000 * 60;
@@ -65,21 +69,48 @@ public class MainActivity extends Activity {
 			    cal.setTimeInMillis(sendTime);
 			    
 				
-		    	 if (Amount.equals("")) { 
-		    		Toast.makeText(MainActivity.this, "ERROR: Please enter an amount greater than $0.00",Toast.LENGTH_LONG).show();
+			    try{
+			    	Double.parseDouble(Amount);
+			    } catch(Exception e){
+			    	Toast.makeText(MainActivity.this, "ERROR: Please enter an amount that isn't $0.00",Toast.LENGTH_LONG).show();
+			    	sendText = false;
+			    }
+		    	if ((Amount.equals("") || Double.parseDouble(Amount) == 0) && sendText) { 
+		    		Toast.makeText(MainActivity.this, "ERROR: Please enter an amount that isn't $0.00",Toast.LENGTH_LONG).show();
+		    		sendText = false;
 		    	 }
-		    		else if (Recipient.equals("")) {
-		    	    Toast.makeText(MainActivity.this, "ERROR: Please select at least one recipient.", Toast.LENGTH_LONG).show();
+		    	if (Recipient.equals("") && sendText) {
+		    	    Toast.makeText(MainActivity.this, "ERROR: Please select a recipient.", Toast.LENGTH_LONG).show();
+		    	    sendText = false;
 		    	}
-		    		else{
+		    	if (RecipientName.equals("") && sendText) {
+		    	    Toast.makeText(MainActivity.this, "ERROR: Please enter the recipient's name.", Toast.LENGTH_LONG).show();
+		    	    sendText = false;
+		    	}
+		    	if (YourName.equals("") && sendText) {
+		    	    Toast.makeText(MainActivity.this, "ERROR: Please enter your name.", Toast.LENGTH_LONG).show();
+		    	    sendText = false;
+		    	}
+		    	if(sendText) {
 		    		// Put texting code HERE
-		    			final String sms = new String("Hey "+ editRecipientName + "! You owe "+ editYourName +" $" + Amount +". It's for " + WhatsItFor + ".");
-		    		
+	    			String smsMessage = new String("Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +". It's for \"" + WhatsItFor + ".\"");
+	    			if(WhatsItFor.equals("")){
+	    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
+	    			}
+	    		
+	    			if(Double.parseDouble(Amount) < 0) {
+	    				Amount = Amount.substring(1,Amount.length());
+	    				smsMessage = "Thanks " + RecipientName + ", for paying me back $" + Amount + " for \"" + WhatsItFor + ".\"";
+	    				if(WhatsItFor.equals("")){
+		    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
+	    				}
+	    			}
+		    		final String sms = smsMessage;
 		    		final Timer mytimer = new Timer(true);
 		    		final TimerTask mytask = new TimerTask() {
-		    			public void run() {
-		                    smsManager.sendTextMessage(Recipient, null, sms, null, null);
-		                }
+		    		public void run() {
+		    			smsManager.sendTextMessage(Recipient, null, sms, null, null);
+		    			}
 		            };
 		            mytimer.schedule(mytask, 60000L);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();

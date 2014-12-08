@@ -28,7 +28,6 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:ems="10"
-        android:inputType="phone"
         android:hint="@string/recipients_name" />
 
    <EditText
@@ -48,7 +47,7 @@
        android:ems="10"
        android:layout_marginTop="15dp"
        android:layout_marginBottom="15dp"
-       android:inputType="numberDecimal" 
+       android:inputType="numberDecimal|numberSigned" 
        android:hint="@string/amount" />
 
    <EditText
