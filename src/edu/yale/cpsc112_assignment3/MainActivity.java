@@ -23,7 +23,7 @@ import android.graphics.drawable.ColorDrawable;
 
 
 public class MainActivity extends Activity {
-	EditText editRecipient, editAmount, editWhatsItFor;
+	EditText editRecipient, editAmount, editWhatsItFor, editRecipientName, editYourName;
 	Button buttonSend;
 	
 
@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
         editRecipient = (EditText) findViewById(R.id.editRecipient);
         editAmount = (EditText) findViewById(R.id.editAmount);
         editWhatsItFor = (EditText) findViewById(R.id.editWhatsItFor);
+        editRecipientName = (EditText) findViewById(R.id.editRecipientName);
+        editYourName = (EditText) findViewById(R.id.editYourName);
         Button buttonSend = (Button) findViewById(R.id.buttonSend);
         
         
@@ -71,7 +73,7 @@ public class MainActivity extends Activity {
 		    	}
 		    		else{
 		    		// Put texting code HERE
-		    			final String sms = new String("Hey there! You owe whoever sent you this text $" + Amount +". It's for " + WhatsItFor + ".");
+		    			final String sms = new String("Hey "+ editRecipientName + "! You owe "+ editYourName +" $" + Amount +". It's for " + WhatsItFor + ".");
 		    		
 		    		final Timer mytimer = new Timer(true);
 		    		final TimerTask mytask = new TimerTask() {
