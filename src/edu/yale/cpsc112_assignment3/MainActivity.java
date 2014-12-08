@@ -6,8 +6,8 @@ import java.util.TimerTask;
 
 import android.app.Activity;
 import android.app.AlarmManager;
-import android.provider.ContactsContract;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.Menu;
@@ -26,11 +26,6 @@ public class MainActivity extends Activity {
 	EditText editRecipient, editAmount, editWhatsItFor, editRecipientName, editYourName;
 	Button buttonSend;
 	
-
-    protected void onCreate1(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.contacts_list_view);
-    }
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +33,7 @@ public class MainActivity extends Activity {
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#669900"));     
         ab.setBackgroundDrawable(colorDrawable);
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         
         editRecipient = (EditText) findViewById(R.id.editRecipient);
