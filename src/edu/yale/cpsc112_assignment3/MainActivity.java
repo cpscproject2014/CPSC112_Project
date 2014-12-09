@@ -58,6 +58,13 @@ public class MainActivity extends Activity {
 				String YourName = editYourName.getText().toString();
 				
 				boolean sendText = true;
+				String decimals = new String();
+				int numberOfDecimals = 0;
+				if (Amount.indexOf('.') != -1){
+					decimals = Amount.substring(Amount.indexOf('.') + 1, Amount.length());
+					numberOfDecimals = decimals.length();
+				}
+				
 				
 				Calendar cal = Calendar.getInstance();
 				long millis = 1000 * 60;
@@ -75,6 +82,13 @@ public class MainActivity extends Activity {
 		    		Toast.makeText(MainActivity.this, "ERROR: Please enter an amount that isn't $0.00",Toast.LENGTH_LONG).show();
 		    		sendText = false;
 		    	 }
+		    	if ((numberOfDecimals > 2) && sendText) { 
+		    		Toast.makeText(MainActivity.this, "ERROR: Dollar amounts cannot have more than two decimals.",Toast.LENGTH_LONG).show();
+		    		sendText = false;
+		    	 }
+		    	if(numberOfDecimals == 1) {
+		    		Amount = "" + Amount + "0";
+		    	}
 		    	if (Recipient.equals("") && sendText) {
 		    	    Toast.makeText(MainActivity.this, "ERROR: Please select a recipient.", Toast.LENGTH_LONG).show();
 		    	    sendText = false;
@@ -89,14 +103,14 @@ public class MainActivity extends Activity {
 		    	}
 		    	if(sendText) {
 		    		// Put texting code HERE
-	    			String smsMessage = new String("Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +". It's for \"" + WhatsItFor + ".\"");
+	    			String smsMessage = new String("Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +". It's for " + WhatsItFor + ".");
 	    			if(WhatsItFor.equals("")){
 	    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
 	    			}
 	    		
 	    			if(Double.parseDouble(Amount) < 0) {
 	    				Amount = Amount.substring(1,Amount.length());
-	    				smsMessage = "Thanks " + RecipientName + ", for paying me back $" + Amount + " for \"" + WhatsItFor + ".\"";
+	    				smsMessage = "Thanks " + RecipientName + ", for paying me back $" + Amount + " for " + WhatsItFor + ".";
 	    				if(WhatsItFor.equals("")){
 		    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
 	    				}
