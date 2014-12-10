@@ -49,7 +49,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-
+				
+				//These change what the user enters in the Textviews to variables.
 				final SmsManager smsManager = SmsManager.getDefault();
 				final String Recipient = editRecipient.getText().toString();
 				String Amount = editAmount.getText().toString();
@@ -58,6 +59,7 @@ public class MainActivity extends Activity {
 				String YourName = editYourName.getText().toString();
 				
 				boolean sendText = true;
+				//These lines tell you how many digits the user placed after the decimal point
 				String decimals = new String();
 				int numberOfDecimals = 0;
 				if (Amount.indexOf('.') != -1){
@@ -65,13 +67,19 @@ public class MainActivity extends Activity {
 					numberOfDecimals = decimals.length();
 				}
 				
-				
+				/*
+				 * This part of the code gets the current time and adds the delay time to it.
+				 * Used http://www.tutorialspoint.com/java/util/java_util_calendar.htm
+				 * It gets the current time in milliseconds, adds on 1 minute of milliseconds to the current time,
+				 * and sets sendTime equal to that time.
+				 */
 				Calendar cal = Calendar.getInstance();
 				long millis = 1000 * 60;
 			    long sendTime = cal.getTimeInMillis() + millis;
 			    cal.setTimeInMillis(sendTime);
 			    
-				
+				//These are all the checks that need to occur in order for the app to send a text message.
+			    //If at any point, one of the checks fails, sendText will be set equal to false, and the text message won't send.
 			    try{
 			    	Double.parseDouble(Amount);
 			    } catch(Exception e){
@@ -82,15 +90,27 @@ public class MainActivity extends Activity {
 		    		Toast.makeText(MainActivity.this, "ERROR: Please enter an amount that isn't $0.00",Toast.LENGTH_LONG).show();
 		    		sendText = false;
 		    	 }
+		    	
+		    	//This makes sure that the user doesn't enter a dollar value like 3.141592653.
 		    	if ((numberOfDecimals > 2) && sendText) { 
 		    		Toast.makeText(MainActivity.this, "ERROR: Dollar amounts cannot have more than two decimals.",Toast.LENGTH_LONG).show();
 		    		sendText = false;
 		    	 }
+		    	
+		    	//This part just adds a 0 if the user enters something like 4.5 for the amount owed. This part will convert it
+		    	//to 4.50.
 		    	if(numberOfDecimals == 1) {
 		    		Amount = "" + Amount + "0";
 		    	}
+		    	
+		    	/*
+		    	 * These checks make sure that the user enters vital information, such as the username, recipient name,
+		    	 * and recipient phone number. WhatsItFor was not deemed vital, because sometimes the sender will not want
+		    	 * to put in a reason for charging somebody every time they use this app. Sometimes it may be obvious what the
+		    	 * recipient is being charged for.
+		    	 */
 		    	if (Recipient.equals("") && sendText) {
-		    	    Toast.makeText(MainActivity.this, "ERROR: Please select a recipient.", Toast.LENGTH_LONG).show();
+		    	    Toast.makeText(MainActivity.this, "ERROR: Please enter the recipient's phone number.", Toast.LENGTH_LONG).show();
 		    	    sendText = false;
 		    	}
 		    	if (RecipientName.equals("") && sendText) {
@@ -101,27 +121,45 @@ public class MainActivity extends Activity {
 		    	    Toast.makeText(MainActivity.this, "ERROR: Please enter your name.", Toast.LENGTH_LONG).show();
 		    	    sendText = false;
 		    	}
+		    	
+		    	//If all the checks work, the app will send a text message.
 		    	if(sendText) {
-		    		// Put texting code HERE
+		    		// Here is the texting code.
 	    			String smsMessage = new String("Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +". It's for " + WhatsItFor + ".");
+	    			
+	    			//This is the adjusted message, if the user doesn't include anything in WhatsItFor.
 	    			if(WhatsItFor.equals("")){
 	    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
 	    			}
-	    		
+	    			
+	    			/*
+	    			 * We decided that the way you delete entries from the data file when somebody does pay you back is that
+	    			 * you subtract the amount you've been paid back. This is done by entering a negative number into the
+	    			 * editAmount Textview. When you click send, the app will subtract this much money for the total that the 
+	    			 * recipient owes you. Then it sends out a text message saying "Thanks for paying me back..." Here is the
+	    			 * code that deals with constructing that message.
+	    			 */
 	    			if(Double.parseDouble(Amount) < 0) {
 	    				Amount = Amount.substring(1,Amount.length());
 	    				smsMessage = "Thanks " + RecipientName + ", for paying me back $" + Amount + " for " + WhatsItFor + ".";
 	    				if(WhatsItFor.equals("")){
-		    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
+		    				smsMessage = "Thanks "+ RecipientName + "! for paying me back  $" + Amount +".";
 	    				}
 	    			}
+	    			
+	    			//This code is for the delay function. 
 		    		final String sms = smsMessage;
+		    		//Used http://developer.android.com/reference/java/util/Timer.html
 		    		final Timer mytimer = new Timer(true);
 		    		final TimerTask mytask = new TimerTask() {
 		    		public void run() {
+		    			//This line of code sends a text message.
+		    			//Used http://developer.android.com/reference/android/telephony/SmsManager.html
 		    			smsManager.sendTextMessage(Recipient, null, sms, null, null);
 		    			}
 		            };
+		            
+		            //This sets the time that the task is completed to 1 minute after the user presses send.
 		            mytimer.schedule(mytask, 60000L);
 		    		Toast.makeText(MainActivity.this, "Submitted!",Toast.LENGTH_LONG).show();
 		    		
