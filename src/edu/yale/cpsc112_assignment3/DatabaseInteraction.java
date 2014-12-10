@@ -9,15 +9,19 @@ public class DatabaseInteraction {
 	{
 		String addedAmount = new String();
 		addedAmount = String.valueOf(amount);
+		 File entries = new File("Entries.txt");
+		 File people = new File("People.txt");
 		
 		//Adds the value to the entries file
-		 FileWriter saveFile = new FileWriter("Entries.txt");
+		 FileWriter saveFile = new FileWriter(entries);
 		 saveFile.write(name + "," + addedAmount + "\n");
+		 
+		
 		 
 		 //Adds the name to the People.txt file, to make creating a list of people with balances easier
 		 //Unlike saveFile, addName won't add the person's name to the register unless it doesn't exists yet.
-		 Scanner scanner = new Scanner("Entries.txt");
-		 FileWriter addName = new FileWriter("People.txt");
+		 Scanner scanner = new Scanner(entries);
+		 FileWriter addName = new FileWriter(people);
 		 boolean nameExists = false;
 		 while(scanner.hasNextLine())
 		 {
@@ -51,7 +55,6 @@ public class DatabaseInteraction {
 				System.out.println("There are no entries!");
 				
 			}
-			//Exception
 			i++;
 		}
 		return sums;
@@ -60,18 +63,31 @@ public class DatabaseInteraction {
 	public static String[] listNames()
 	{
 		String[] names = null;
-		Scanner scanner = new Scanner("People.txt");
-		String namesString = scanner.nextLine();
+		File entries = new File("People.txt");
+		Scanner scanner = null;
+		try {
+			scanner = new Scanner(entries);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			return null;
+		}
+		String namesString = new String();
+		while (scanner.hasNextLine())
+		{
+			namesString = scanner.nextLine() + ",";
+		}
 		names = namesString.split(",");
 		
 		scanner.close();
+		
 		return names;
 	}
 	
 	public static double sumPersonEntries(String name) throws IOException {
+		File entries = new File("Entries.txt");
 		
 		double sum = 0;
-		BufferedReader saveFile = new BufferedReader(new FileReader("Entries.txt"));
+		BufferedReader saveFile = new BufferedReader(new FileReader(entries));
 		if(saveFile.readLine() == null)
 		{
 			
