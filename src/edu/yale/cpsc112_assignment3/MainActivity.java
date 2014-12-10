@@ -143,7 +143,7 @@ public class MainActivity extends Activity {
 	    				Amount = Amount.substring(1,Amount.length());
 	    				smsMessage = "Thanks " + RecipientName + ", for paying me back $" + Amount + " for " + WhatsItFor + ".";
 	    				if(WhatsItFor.equals("")){
-		    				smsMessage = "Thanks "+ RecipientName + "! for paying me back  $" + Amount +".";
+		    				smsMessage = "Thanks "+ RecipientName + ", for paying me back $" + Amount +".";
 	    				}
 	    			}
 	    			
