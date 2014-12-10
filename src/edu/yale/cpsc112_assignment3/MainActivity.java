@@ -3,7 +3,6 @@ package edu.yale.cpsc112_assignment3;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.content.Intent;
@@ -140,6 +139,7 @@ public class MainActivity extends Activity {
 	    			 * code that deals with constructing that message.
 	    			 */
 	    			if(Double.parseDouble(Amount) < 0) {
+	    				//This line removes the negative sign.
 	    				Amount = Amount.substring(1,Amount.length());
 	    				smsMessage = "Thanks " + RecipientName + ", for paying me back $" + Amount + " for " + WhatsItFor + ".";
 	    				if(WhatsItFor.equals("")){
@@ -147,7 +147,7 @@ public class MainActivity extends Activity {
 	    				}
 	    			}
 	    			
-	    			//This code is for the delay function. 
+	    			//This section of code is for the delay function. 
 		    		final String sms = smsMessage;
 		    		//Used http://developer.android.com/reference/java/util/Timer.html
 		    		final Timer mytimer = new Timer(true);
