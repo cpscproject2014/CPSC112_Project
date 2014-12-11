@@ -221,10 +221,10 @@ public class MainActivity extends Activity {
 	    	  openBalances();
 	         return true;
 	      }
-	      if(id == R.id.action_about)
-	      {
-	    	  openAbout();
-	      }
+	     // if(id == R.id.action_about)
+	     // {
+	    //	  openAbout();
+	    //  }
 	      return super.onOptionsItemSelected(item);
 	   }
 	   public void openBalances(){
@@ -232,8 +232,8 @@ public class MainActivity extends Activity {
 		   startActivity(intent);
 	   }
 	   
-	   public void openAbout(){
-		   Intent intent = new Intent(this, MainActivity3.class);
-		   startActivity(intent);
-	   }
+	 //  public void openAbout(){
+	//	   Intent intent = new Intent(this, MainActivity3.class);
+	//	   startActivity(intent);
+	 //  }
 }
