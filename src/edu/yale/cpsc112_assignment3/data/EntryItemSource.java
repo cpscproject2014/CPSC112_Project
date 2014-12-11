@@ -13,6 +13,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class EntryItemSource {
+	//Defines the method that allow for interaction with the SharedPreferences
+	//data storage area.  Handles data storage of EntryItem objects.
 	
 	private static final String PREFKEY = "notes";
 	private SharedPreferences notePrefs;

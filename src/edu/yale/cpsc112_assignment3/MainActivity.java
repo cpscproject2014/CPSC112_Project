@@ -41,6 +41,8 @@ public class MainActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         
+        //Instatiate the entryItemSource class so it can be used.
+        //the parameter (this) connects the context of the classes
         entrySource = new EntryItemSource(this);
       	final List<EntryItem> entries = entrySource.findAll();      
       	
@@ -135,13 +137,13 @@ public class MainActivity extends Activity {
 		    		// Here is the texting code.
 	    			String smsMessage = new String("Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +". It's for " + WhatsItFor + ".");
 		    		
-	    			//Add entry
+	    			//Add entry, but first create default entry in order to edit that later
 		    		EntryItem entry = EntryItem.getNew();
 		    		//Create unique ID because without it, any entry that uses the same key will overwrite previous values
 		    		//The UUID ensures that no values will be overwritten, and since 
 		    		UUID uuid = UUID.randomUUID();
-		    		entry.setKey(Recipient + uuid);
-		    		entry.setValue(Recipient + ":" + Amount);
+		    		entry.setKey(RecipientName + uuid);
+		    		entry.setValue(RecipientName + ": $" + Amount);
 		    		entrySource.update(entry);
 		    		
 	    			//This is the adjusted message, if the user doesn't include anything in WhatsItFor.
@@ -149,12 +151,13 @@ public class MainActivity extends Activity {
 	    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
 			    		
 	    				//Add entry
+	    				//Repeated from previous, still the same code.
 			    		entry = EntryItem.getNew();
 			    		//Create unique ID because without it, any entry that uses the same key will overwrite previous values
 			    		//The UUID ensures that no values will be overwritten, and since 
 			    		uuid = UUID.randomUUID();
-			    		entry.setKey(Recipient + uuid);
-			    		entry.setValue(Recipient + ":" + Amount);	
+			    		entry.setKey(RecipientName + uuid);
+			    		entry.setValue(RecipientName + ": $" + Amount);	
 			    		entrySource.update(entry);
 	    				
 	    			}

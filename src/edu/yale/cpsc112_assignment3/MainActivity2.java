@@ -33,6 +33,7 @@ public class MainActivity2 extends ListActivity {
 		refreshDisplay();
 	}
 	private void refreshDisplay() {
+		//creates the data to be displayed in the ListView Object
 		entriesList = entrySource.findAll();
 		
 		ArrayAdapter<EntryItem> adapter = new ArrayAdapter<EntryItem>(this, android.R.layout.simple_list_item_1, entriesList);

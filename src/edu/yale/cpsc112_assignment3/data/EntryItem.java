@@ -2,6 +2,7 @@ package edu.yale.cpsc112_assignment3.data;
 
 
 public class EntryItem {
+	//Defines the EntryItem object, which contains a key value pair.
 	
 	private String key;
 	private String value;
