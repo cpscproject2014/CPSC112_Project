@@ -1,8 +1,13 @@
 package edu.yale.cpsc112_assignment3;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.UUID;
+
+import edu.yale.cpsc112_assignment3.data.EntryItem;
+import edu.yale.cpsc112_assignment3.data.EntryItemSource;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.content.Intent;
@@ -24,6 +29,7 @@ import android.graphics.drawable.ColorDrawable;
 public class MainActivity extends Activity {
 	EditText editRecipient, editAmount, editWhatsItFor, editRecipientName, editYourName;
 	Button buttonSend;
+	private EntryItemSource entrySource;
 	
     
 	@Override
@@ -35,6 +41,9 @@ public class MainActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
         
+        entrySource = new EntryItemSource(this);
+      	final List<EntryItem> entries = entrySource.findAll();      
+      	
         editRecipient = (EditText) findViewById(R.id.editRecipient);
         editAmount = (EditText) findViewById(R.id.editAmount);
         editWhatsItFor = (EditText) findViewById(R.id.editWhatsItFor);
@@ -125,10 +134,29 @@ public class MainActivity extends Activity {
 		    	if(sendText) {
 		    		// Here is the texting code.
 	    			String smsMessage = new String("Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +". It's for " + WhatsItFor + ".");
-	    			
+		    		
+	    			//Add entry
+		    		EntryItem entry = EntryItem.getNew();
+		    		//Create unique ID because without it, any entry that uses the same key will overwrite previous values
+		    		//The UUID ensures that no values will be overwritten, and since 
+		    		UUID uuid = UUID.randomUUID();
+		    		entry.setKey(Recipient + uuid);
+		    		entry.setValue(Recipient + ":" + Amount);
+		    		entrySource.update(entry);
+		    		
 	    			//This is the adjusted message, if the user doesn't include anything in WhatsItFor.
 	    			if(WhatsItFor.equals("")){
 	    				smsMessage = "Hey "+ RecipientName + "! You owe "+ YourName +" $" + Amount +".";
+			    		
+	    				//Add entry
+			    		entry = EntryItem.getNew();
+			    		//Create unique ID because without it, any entry that uses the same key will overwrite previous values
+			    		//The UUID ensures that no values will be overwritten, and since 
+			    		uuid = UUID.randomUUID();
+			    		entry.setKey(Recipient + uuid);
+			    		entry.setValue(Recipient + ":" + Amount);	
+			    		entrySource.update(entry);
+	    				
 	    			}
 	    			
 	    			/*
